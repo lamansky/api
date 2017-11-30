@@ -1,0 +1,21 @@
+{
+    "name": "lamansky/api",
+    "description": "Api",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "John Lamansky",
+            "email": "lamansky@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.1.0",
+        "altorouter/altorouter": "^1.2.0",
+        "darsyn/ip": "^3.3.1"
+    },
+    "autoload": {
+        "psr-4": {"Lamansky\\Api\\": "src/"}
+    }
+}
