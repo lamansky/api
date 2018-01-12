@@ -10,7 +10,9 @@ Use [Composer](http://getcomposer.org):
 composer require lamansky/api
 ```
 
-## Basic Usage
+## Usage Tutorial
+
+### Introduction
 
 An endpoint is a URL (or URL pattern) that can receive REST commands.
 Every endpoint in your API will be represented by a PHP class.
@@ -60,7 +62,7 @@ You now have a working API! If your site is running on `localhost`,
 then the API will output `Hello world!`
 when you send a GET command to `http://localhost/api/hello-world/`.
 
-## URL Variables
+### URL Variables
 
 So far we've seen how to create an endpoint with a static URL.
 But what if we need to manipulate an item with a given ID?
@@ -96,7 +98,7 @@ The Lamansky/Api library uses [AltoRouter](http://altorouter.com/) to handle
 route mapping. For more information on the `[i:id]` syntax, please refer to that library's
 [route mapping documentation](http://altorouter.com/usage/mapping-routes.html).
 
-## GET/POST Variables
+### GET/POST Variables
 
 Any variables sent via a JSON POST request, or via a GET query-string variable,
 are automatically accessible to your methods as variables.
@@ -111,7 +113,7 @@ Notice that the `$category_id` parameter follows the PHP convention of underscor
 However, JSON tends to use camel-case keys, and GET variables tend to be lowercase. This is not a problem:
 the library will look for `categoryId` or `categoryid` in POST/GET and automatically map them to the `$category_id` variable.
 
-## JSON Views
+### JSON Views
 
 If you are constructing a JSON API, consider using a `JsonView` class to convert
 your models to JSON:
@@ -157,7 +159,7 @@ class BlogPostCollectionEndpoint implements CollectionEndpoint {
 }
 ```
 
-## Example
+### Complete Example
 
 ```php
 <?php
