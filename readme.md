@@ -45,7 +45,7 @@ class HelloWorldEndpoint implements ReadOnlyEndpoint {
 
 Each REST method returns a `Responder` object.
 (The `Responder` class also has several subclasses you can use,
-such as `JsonResponder` and `FileResponder`.)
+such as `JsonResponder`, `FileResponder`, and `DeferredResponder`.)
 
 Once you have your endpoints ready, add them to an API object:
 

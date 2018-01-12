@@ -37,8 +37,11 @@ class Responder {
 			header($header);
 		}
 
-		if ($this->mime_type && $this->content) {
+		if ($this->mime_type) {
 			header('Content-Type: ' . $this->mime_type);
+		}
+
+		if ($this->content) {
 			header('Content-Length: ' . strlen($this->content));
 			echo $this->content;
 		}
