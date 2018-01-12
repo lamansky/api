@@ -58,6 +58,16 @@ $api->registerEndpoint(new HelloWorldEndpoint());
 $api->getResponder()->sendResponseAndDie();
 ```
 
+You’ll also need to make sure that the server is routing all requests to the above file.
+Assuming this file is named `index.php` and you’re running Apache, you would create
+an `.htaccess` file like this:
+
+```
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]
+```
+
 You now have a working API! If your site is running on `localhost`,
 then the API will output `Hello world!`
 when you send a GET command to `http://localhost/api/hello-world/`.
