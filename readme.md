@@ -64,7 +64,7 @@ when you send a GET command to `http://localhost/api/hello-world/`.
 
 ### URL Variables
 
-So far we've seen how to create an endpoint with a static URL.
+So far we’ve seen how to create an endpoint with a static URL.
 But what if we need to manipulate an item with a given ID?
 
 ```php
@@ -91,11 +91,11 @@ class ExampleItemEndpoint implements ItemEndpoint {
 }
 ```
 
-In our route pattern string, we've added a handler for an integer named `id`.
+In our route pattern string, we’ve added a handler for an integer named `id`.
 This is then automatically mapped to the `$id` variable in our REST-verb methods.
 
 The Lamansky/Api library uses [AltoRouter](http://altorouter.com/) to handle
-route mapping. For more information on the `[i:id]` syntax, please refer to that library's
+route mapping. For more information on the `[i:id]` syntax, please refer to that library’s
 [route mapping documentation](http://altorouter.com/usage/mapping-routes.html).
 
 ### GET/POST Variables
