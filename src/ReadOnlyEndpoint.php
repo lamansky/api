@@ -2,5 +2,5 @@
 namespace Lamansky\Api;
 
 interface ReadOnlyEndpoint extends Endpoint {
-	public function get() : Responder;
+    public function get () : Responder;
 }

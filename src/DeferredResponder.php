@@ -11,15 +11,15 @@ namespace Lamansky\Api;
  * @see http://php.net/manual/en/function.readfile.php
  */
 class DeferredResponder extends Responder {
-	protected $get_content;
+    protected $get_content;
 
-	public function __construct(int $http_status_code, string $mime_type, callable $get_content) {
-		parent::__construct($http_status_code, $mime_type);
-		$this->get_content = $get_content;
-	}
+    public function __construct (int $http_status_code, string $mime_type, callable $get_content) {
+        parent::__construct($http_status_code, $mime_type);
+        $this->get_content = $get_content;
+    }
 
-	protected function sendResponse() {
-		parent::sendResponse();
-		echo ($this->get_content)();
-	}
+    protected function sendResponse () : void {
+        parent::sendResponse();
+        echo ($this->get_content)();
+    }
 }

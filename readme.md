@@ -1,6 +1,6 @@
 # Lamansky/Api
 
-Create REST APIs in an MVC fashion using PHP classes to represent API endpoints.
+Lets you create REST APIs using PHP classes to represent API endpoints.
 
 ## Installation
 
@@ -14,10 +14,7 @@ composer require lamansky/api
 
 ### Introduction
 
-An endpoint is a URL (or URL pattern) that can receive REST commands.
-Every endpoint in your API will be represented by a PHP class.
-This PHP class implements an `Endpoint` interface appropriate to the types of
-REST commands it can accept.
+An endpoint is a URL (or URL pattern) that can receive REST commands. Every endpoint in your API will be represented by a PHP class. This PHP class implements an `Endpoint` interface appropriate to the types of REST commands it can accept.
 
 |                      | GET | POST | PUT | DELETE |
 |---------------------:|:---:|:----:|:---:|:------:|
@@ -43,9 +40,7 @@ class HelloWorldEndpoint implements ReadOnlyEndpoint {
 }
 ```
 
-Each REST method returns a `Responder` object.
-(The `Responder` class also has several subclasses you can use,
-such as `JsonResponder`, `FileResponder`, and `DeferredResponder`.)
+Each REST method returns a `Responder` object. (The `Responder` class also has several subclasses you can use, such as `JsonResponder`, `FileResponder`, and `DeferredResponder`.)
 
 Once you have your endpoints ready, add them to an API object:
 
@@ -58,9 +53,7 @@ $api->registerEndpoint(new HelloWorldEndpoint());
 $api->getResponder()->sendResponseAndDie();
 ```
 
-You’ll also need to make sure that the server is routing all requests to the above file.
-Assuming this file is named `index.php` and you’re running Apache, you would create
-an `.htaccess` file like this:
+You’ll also need to make sure that the server is routing all requests to the above file. Assuming this file is named `index.php` and you’re running Apache, you would create an `.htaccess` file like this:
 
 ```
 RewriteEngine on
@@ -68,14 +61,11 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule . index.php [L]
 ```
 
-You now have a working API! If your site is running on `localhost`,
-then the API will output `Hello world!`
-when you send a GET command to `http://localhost/api/hello-world/`.
+You now have a working API! If your site is running on `localhost`, then the API will output `Hello world!` when you send a GET command to `http://localhost/api/hello-world/`.
 
 ### URL Variables
 
-So far we’ve seen how to create an endpoint with a static URL.
-But what if we need to manipulate an item with a given ID?
+So far we’ve seen how to create an endpoint with a static URL. But what if we need to manipulate an item with a given ID?
 
 ```php
 <?php
@@ -101,17 +91,13 @@ class ExampleItemEndpoint implements ItemEndpoint {
 }
 ```
 
-In our route pattern string, we’ve added a handler for an integer named `id`.
-This is then automatically mapped to the `$id` variable in our REST-verb methods.
+In our route pattern string, we’ve added a handler for an integer named `id`. This is then automatically mapped to the `$id` variable in our REST-verb methods.
 
-The Lamansky/Api library uses [AltoRouter](http://altorouter.com/) to handle
-route mapping. For more information on the `[i:id]` syntax, please refer to that library’s
-[route mapping documentation](http://altorouter.com/usage/mapping-routes.html).
+The Lamansky/Api library uses [AltoRouter](http://altorouter.com/) to handle route mapping. For more information on the `[i:id]` syntax, please refer to that library’s [route mapping documentation](http://altorouter.com/usage/mapping-routes.html).
 
 ### GET/POST Variables
 
-Any variables sent via a JSON POST request, or via a GET query-string variable,
-are automatically accessible to your methods as variables.
+Any variables sent via a JSON POST request, or via a GET query-string variable, are automatically accessible to your methods as variables.
 
 ```php
 public function post(string $title=null, string $content=null, id $category_id=null) : Responder {
@@ -119,14 +105,11 @@ public function post(string $title=null, string $content=null, id $category_id=n
 }
 ```
 
-Notice that the `$category_id` parameter follows the PHP convention of underscored variable names.
-However, JSON tends to use camel-case keys, and GET variables tend to be lowercase. This is not a problem:
-the library will look for `categoryId` or `categoryid` in POST/GET and automatically map them to the `$category_id` variable.
+Notice that the `$category_id` parameter follows the PHP convention of underscored variable names. However, JSON tends to use camel-case keys, and GET variables tend to be lowercase. This is not a problem: the library will look for `categoryId` or `categoryid` in POST/GET and automatically map them to the `$category_id` variable.
 
 ### JSON Views
 
-If you are constructing a JSON API, consider using a `JsonView` class to convert
-your models to JSON:
+If you are constructing a JSON API, consider using a `JsonView` class to convert your models to JSON:
 
 ```php
 <?php

@@ -2,5 +2,5 @@
 namespace Lamansky\Api;
 
 interface Endpoint {
-	public function getRoutePattern() : string;
+    public function getRoutePattern () : string;
 }
