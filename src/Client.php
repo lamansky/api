@@ -1,6 +1,5 @@
 <?php
 namespace Lamansky\Api;
-use Darsyn\IP\IP;
 
 final class Client {
     private function __construct () {}
@@ -14,12 +13,12 @@ final class Client {
         return $instance;
     }
 
-    public function getIp () : ?IP {
+    public function getIp () : ?IpAddress {
         static $ip = null;
         if ($ip === null) {
             try {
-                $ip = new IP($this->getIpString());
-            } catch (\Darsyn\IP\InvalidIpAddressException $e) {
+                $ip = IpAddress::factory($this->getIpString());
+            } catch (\Darsyn\IP\Exception\IpException $e) {
                 $ip = false;
             }
         }

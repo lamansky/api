@@ -4,11 +4,13 @@ Lets you create REST APIs using PHP classes to represent API endpoints.
 
 ## Installation
 
-Use [Composer](http://getcomposer.org):
+With [Composer](http://getcomposer.org) installed on your computer and initialized for your project, run this command in your project’s root directory:
 
 ```bash
 composer require lamansky/api
 ```
+
+Requires PHP 7.4 or above.
 
 ## Usage Tutorial
 
@@ -208,3 +210,12 @@ A GET request to `http://localhost/api/test/1/` will produce:
     "id": 1
 }
 ```
+
+## Version Migration Guide
+
+Here are backward-incompatible changes you need to know about.
+
+### 1.x ⇒ 2.x
+
+* The minimum supported PHP version is now 7.4 (instead of 7.1).
+* The [darsyn/ip](https://github.com/darsyn/ip) dependency has been updated to version 4.x, which may introduce some backward-incompatible changes for those who relied on the public API of the `Darsyn\IP\IP` object formerly returned by the `Client::instance()->getIp()` method. This method now returns a `Lamansky\Api\IpAddress` object which wraps around the `darsyn/ip` library and will serve as a buffer against further backward-incompatible changes from that dependency. If you were previously using the `Darsyn\IP\Doctrine\IpType` Doctrine2 type, consider replacing it with the compatibility wrapper `Lamansky\Api\Doctrine\IpAddressType`.
