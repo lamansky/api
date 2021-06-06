@@ -18,10 +18,6 @@ final class Request {
         }
     }
 
-    private function __clone () {}
-    private function __sleep () {}
-    private function __wakeup () {}
-
     public static function instance () : Request {
         static $instance;
         if (!$instance) { $instance = new static(); }

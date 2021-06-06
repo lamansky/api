@@ -3,9 +3,6 @@ namespace Lamansky\Api;
 
 final class Client {
     private function __construct () {}
-    private function __clone () {}
-    private function __sleep () {}
-    private function __wakeup () {}
 
     public static function instance () : Client {
         static $instance;

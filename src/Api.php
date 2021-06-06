@@ -92,7 +92,7 @@ class Api {
 
             if ($found_param) {
                 if ($parameter->hasType()) {
-                    if (!settype($method_arg, (string)$parameter->getType())) {
+                    if (!settype($method_arg, ltrim($parameter->getType(), '?'))) {
                         $method_arg = $parameter->getDefaultValue();
                     }
                 }
